@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="myStyles.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <form class="form">
+            <div class="header">
+                <input id="passwordField" type="text" value="Password field" />
+                <button id="copyBtn">Copy</button>
+            </div>
+            <div class="options-container">
+                <div class="options-items">
+                    <label for="volume">Length</label>
+                    <input type="range" id="length" name="volume" value="12" min="8" max="64"
+                        oninput="this.nextElementSibling.value = this.value" />
+                    <output id="numberOfCharacters">12</output>
+                </div>
+                <label class="options-items">Use upper case (A-Z)
+                    <input type="checkbox" checked="checked" id="upperCaseCheckbox" name="upper case">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="options-items">User lower case (a-z)
+                    <input type="checkbox" checked="checked" id="lowerCaseCheckbox" name="lower case">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="options-items">Use numbers (0-9)
+                    <input type="checkbox" checked="checked" id="numberCheckbox" name="numbers">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="options-items">Use special characters
+                    <input type="checkbox" checked="checked" id="specialCharactersCheckbox" name="special characters">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="footer">
+                <button id="btn-generate">Generate password</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+<script src="./myJS.js"></script>
+
+</html>
