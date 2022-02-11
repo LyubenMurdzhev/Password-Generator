@@ -22,19 +22,42 @@ body {
 }
 
 .form {
-    height:100%;
-    margin:0 2rem;
-    min-height:400px;
     display:flex;
     flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    margin:2rem;
+    min-height:400px;
 }
 
+/* Header */
 .header {
     width:100%;
-    padding: 1rem 0;
 }
 
+#passwordField {
+    display:block;
+    width:100%;
+    resize:none;
+}
+
+#securityIndicator {
+    float:left;
+    margin: 1rem;
+}
+
+#copyBtn {
+ float:right;
+ margin: 1rem;
+}
+
+
+
+/* Options */
+
 .options-container {
+    padding:1rem 2rem;
     height:100%;
     background-color:green;
     display:flex;
@@ -51,6 +74,8 @@ body {
     padding: 1rem 0;
 }
 
+
+/* Footer */
 .btn-generate {
     width:100%;
 }

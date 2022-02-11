@@ -10,30 +10,31 @@
     <div class="main-container">
         <form class="form">
             <div class="header">
-                <input id="passwordField" type="text" value="Password field" />
+                <textarea id="passwordField" type="text" rows="3" cols="1" readonly></textarea>
+                <span id="securityIndicator">text</span>
                 <button id="copyBtn">Copy</button>
             </div>
             <div class="options-container">
                 <div class="options-items">
                     <label for="volume">Length</label>
-                    <input type="range" id="length" name="volume" value="12" min="8" max="64"
+                    <input type="range" id="length" name="volume" value="64" min="8" max="64"
                         oninput="this.nextElementSibling.value = this.value" />
-                    <output id="numberOfCharacters">12</output>
+                    <output id="numberOfCharacters">64</output>
                 </div>
                 <label class="options-items">Use upper case (A-Z)
-                    <input type="checkbox" checked="checked" id="upperCaseCheckbox" name="upper case">
+                    <input type="checkbox"  id="upperCaseCheckbox" class="checkboxes" name="upper case" checked="checked">
                     <span class="checkmark"></span>
                 </label>
                 <label class="options-items">User lower case (a-z)
-                    <input type="checkbox" checked="checked" id="lowerCaseCheckbox" name="lower case">
+                    <input type="checkbox" id="lowerCaseCheckbox" class="checkboxes"  name="lower case" checked="checked">
                     <span class="checkmark"></span>
                 </label>
                 <label class="options-items">Use numbers (0-9)
-                    <input type="checkbox" checked="checked" id="numberCheckbox" name="numbers">
+                    <input type="checkbox" id="numberCheckbox" class="checkboxes"  name="numbers" checked="checked">
                     <span class="checkmark"></span>
                 </label>
                 <label class="options-items">Use special characters
-                    <input type="checkbox" checked="checked" id="specialCharactersCheckbox" name="special characters">
+                    <input type="checkbox" id="specialCharactersCheckbox" class="checkboxes"  name="special characters" checked="checked">
                     <span class="checkmark"></span>
                 </label>
             </div>
