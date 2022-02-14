@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="myStyles.css">
+    <title>Password generator</title>
 </head>
 
 <body>
     <div class="main-container">
         <form class="form">
             <div class="header">
-                <textarea id="passwordField" type="text" rows="3" cols="1" readonly disabled title="password field"></textarea>
-                <p class="security-container">Password is <span id="securityIndicator"></span></p>
-                <button class="buttons" id="copyBtn">Copy</button>
+                <textarea id="passwordField" type="text" rows="3" cols="1" title="password field" readonly disabled ></textarea>
+                <div class="secondary-header-container">
+                    <p class="security-container">Password is <span id="securityIndicator"></span></p>
+                    <button class="buttons" id="copyBtn">Copy</button>
+                </div>
             </div>
             <div class="options-container">
                 <div class="options-items">
                     <label for="volume">Length</label>
                     <input type="range" id="length" name="volume" value="12" min="4" max="18"
-                        oninput="this.nextElementSibling.value = this.value" />
+                        oninput="this.nextElementSibling.value = this.value" title="length of password" placeholder="12" />
                     <output id="numberOfCharacters">12</output>
                 </div>
-                <label class="options-items">Use upper case (A-Z)
+                <label class="options-items option-main-checkboxes">Use upper case (A-Z)
                     <input type="checkbox"  id="upperCaseCheckbox" class="checkboxes" name="upper case" checked="checked" role="switch">
                 </label>
-                <label class="options-items">User lower case (a-z)
+                <label class="options-items option-main-checkboxes">User lower case (a-z)
                     <input type="checkbox" id="lowerCaseCheckbox" class="checkboxes"  name="lower case" checked="checked" role="switch">               
                 </label>
-                <label class="options-items">Use numbers (0-9)
+                <label class="options-items option-main-checkboxes">Use numbers (0-9)
                     <input type="checkbox" id="numberCheckbox" class="checkboxes"  name="numbers" checked="checked" role="switch">
                     <span class="checkmark"></span>
                 </label>
-                <label class="options-items">Use special characters
+                <label class="options-items option-main-checkboxes">Use special characters
                     <input type="checkbox" id="specialCharactersCheckbox" class="checkboxes"  name="special characters" checked="checked" role="switch">
                 </label>
                 <label class="options-items">Exclude repeating characters

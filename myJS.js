@@ -12,6 +12,8 @@ const
     specialCharactersCheckbox = document.getElementById("specialCharactersCheckbox"),
     repeatingCharactersCheckbox = document.getElementById("repeatingCharactersCheckbox"),
 
+    allCheckboxes = document.querySelectorAll(".checkboxes"),
+
 
     // Elements of the page  (const)
     generateBtn = document.getElementById("btn-generate"),
@@ -23,6 +25,10 @@ const
 // Generate password function
 const generatePassword = (e) => {
     e.preventDefault();
+
+    var allCheckedCheckboxes = document.querySelectorAll('.option-main-checkboxes > input[type="checkbox"]:checked'); // All main checkboxes that are checkled
+
+    if (allCheckedCheckboxes.length >= 1) { // check if at least one of the main checkboxes is checked.
 
     var numberOfCharacters = document.getElementById("numberOfCharacters").value, // Password length 
         generatedPassword = "", // Empty string for the generated password
@@ -54,7 +60,7 @@ const generatePassword = (e) => {
 
     // Adjust securityIndex depending on password length
     if (numberOfCharacters <= 8) { 
-        securityIndex = (securityIndex -2);
+        securityIndex = (securityIndex -3);
     } else if (numberOfCharacters <= 12) {
         securityIndex = (securityIndex -1);
     } else if (numberOfCharacters >= 13) {
@@ -66,7 +72,7 @@ const generatePassword = (e) => {
         securityIndicator.innerHTML = "strong";
         securityIndicator.classList.add("strong");
         securityIndicator.classList.remove("medium","weak");
-    } else if (securityIndex >= 3) {
+    } else if (securityIndex >= 2) {
         securityIndicator.innerHTML = "medium";
         securityIndicator.classList.add("medium");
         securityIndicator.classList.remove("strong","weak");
@@ -78,19 +84,22 @@ const generatePassword = (e) => {
 
     console.log(securityIndex);
 
-        // Generating the password without Permutation
+    // Generating the password
     generator = () => {
             if (repeatingCharactersCheckbox.checked == true) { // checkbox 'Exclude repeating characters' is checked TRUE
                 var arrayOfGeneratedCharacters =[]; // Array to push generated characters
            
-                do {
-                    var randomNumber = Math.floor(Math.random() * stringOfCharacters.length);
-                    // generatedPassword += stringOfCharacters.substring(randomNumber, randomNumber + 1);
-                    var generatedCharacter = stringOfCharacters.substring(randomNumber, randomNumber + 1);
-                    if (!arrayOfGeneratedCharacters.includes(generatedCharacter)){ // Check if the generated character is already in the Array
-                        arrayOfGeneratedCharacters.push(generatedCharacter);
-                    }
+                do { // Generating the password without Permutation
+                
+                        var randomNumber = Math.floor(Math.random() * stringOfCharacters.length);
+                        var generatedCharacter = stringOfCharacters.substring(randomNumber, randomNumber + 1); 
+                        if (!arrayOfGeneratedCharacters.includes(generatedCharacter)){ // Check if the generated character is already in the Array
+                            arrayOfGeneratedCharacters.push(generatedCharacter);
+                        }
+                   
+                    
                 } while (arrayOfGeneratedCharacters.length < numberOfCharacters); // End conditional check
+                
                 let generatedPassword = arrayOfGeneratedCharacters.join("");
                 let passwordField = document.getElementById("passwordField").value = generatedPassword; // Displays in password field
             
@@ -98,17 +107,29 @@ const generatePassword = (e) => {
             else { // checkbox 'Exclude repeating characters' is checked FALSE
                 for (let i = 0; i < numberOfCharacters; i++) {
                     let randomNumber = Math.floor(Math.random() * stringOfCharacters.length);
-                    generatedPassword += stringOfCharacters.substring(randomNumber, randomNumber + 1); 
+                    generatedPassword += stringOfCharacters.substring(randomNumber, randomNumber + 1); // Generate random character
                     let passwordField = document.getElementById("passwordField").value = generatedPassword; // Displays in password field
                 }  
             }
-        } 
-    generator();
+        }
+        generator();
+    } else { // No main checkboxes are checked
+        console.log(this);
+        let passwordField = document.getElementById("passwordField").value = ""; // Reset passwordfield
+        window.alert('You need at least one checkbox to generated password'); // Alert window
+        let mainCheckboxes = document.querySelectorAll('.option-main-checkboxes > input'); // All main checkboxes
+
+
+        for (i=0; i < mainCheckboxes.length; i++) {
+            mainCheckboxes[i].checked = true;
+        }
+    }
+ 
 }
 generateBtn.addEventListener('click', generatePassword); // Generate button triggers Password Generation
 slider.addEventListener('change', generatePassword); // slider triggers Password Generation
 
-document.querySelectorAll('.checkboxes').forEach(item => { // Checkbox change triggers Password Generation
+document.querySelectorAll('.checkboxes').forEach(item => { // Each checkbox change triggers Password Generation
     item.addEventListener('change', generatePassword);
   }) 
 
