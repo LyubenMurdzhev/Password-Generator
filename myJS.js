@@ -89,8 +89,8 @@ const generatePassword = (e) => {
             if (repeatingCharactersCheckbox.checked == true) { // checkbox 'Exclude repeating characters' is checked TRUE
                 var arrayOfGeneratedCharacters =[]; // Array to push generated characters
            
-                do { // Generating the password without Permutation
-                
+                do { 
+                    // Generating the password without Permutation       
                         var randomNumber = Math.floor(Math.random() * stringOfCharacters.length);
                         var generatedCharacter = stringOfCharacters.substring(randomNumber, randomNumber + 1); 
                         if (!arrayOfGeneratedCharacters.includes(generatedCharacter)){ // Check if the generated character is already in the Array
@@ -104,7 +104,8 @@ const generatePassword = (e) => {
                 let passwordField = document.getElementById("passwordField").value = generatedPassword; // Displays in password field
             
             } 
-            else { // checkbox 'Exclude repeating characters' is checked FALSE
+            else {
+                 // checkbox 'Exclude repeating characters' is checked FALSE
                 for (let i = 0; i < numberOfCharacters; i++) {
                     let randomNumber = Math.floor(Math.random() * stringOfCharacters.length);
                     generatedPassword += stringOfCharacters.substring(randomNumber, randomNumber + 1); // Generate random character
@@ -113,7 +114,8 @@ const generatePassword = (e) => {
             }
         }
         generator();
-    } else { // No main checkboxes are checked
+    } else { 
+        // No main checkboxes are checked
         console.log(this);
         let passwordField = document.getElementById("passwordField").value = ""; // Reset passwordfield
         window.alert('You need at least one checkbox to generated password'); // Alert window
@@ -126,10 +128,14 @@ const generatePassword = (e) => {
     }
  
 }
-generateBtn.addEventListener('click', generatePassword); // Generate button triggers Password Generation
-slider.addEventListener('change', generatePassword); // slider triggers Password Generation
+// Generate button triggers Password Generation
+generateBtn.addEventListener('click', generatePassword); 
 
-document.querySelectorAll('.checkboxes').forEach(item => { // Each checkbox change triggers Password Generation
+// slider triggers Password Generation
+slider.addEventListener('change', generatePassword); 
+
+ // Each checkbox change triggers Password Generation
+document.querySelectorAll('.checkboxes').forEach(item => {
     item.addEventListener('change', generatePassword);
   }) 
 
@@ -150,11 +156,13 @@ copyPassword = (e) => {
             window.alert('Opps! Your browser does not support the Clipboard API')
         }
     ) 
-    } else { // If password field is empty
+    } else {
+         // If password field is empty
         window.alert('Please generate a password before you copy!')
     }
 }
-copyBtn.addEventListener("click", copyPassword); // Adding event listener to Copy button
+// Adding event listener to Copy button
+copyBtn.addEventListener("click", copyPassword); 
 
 
 
